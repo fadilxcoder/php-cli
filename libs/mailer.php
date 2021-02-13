@@ -14,8 +14,8 @@
             $mail->isSMTP();                                            
             $mail->Host       	= 'smtp.mailtrap.io';                
             $mail->SMTPAuth   	= true;                               
-            $mail->Username   	= '';                 
-            $mail->Password   	= '';                           
+            $mail->Username   	= 'ac18046f15d082';                 
+            $mail->Password   	= 'f8a9b46c05ac3e';                           
             $mail->SMTPSecure 	= PHPMailer::ENCRYPTION_STARTTLS;     
             $mail->Port       	= 2525;                                
         

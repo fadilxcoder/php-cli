@@ -6,9 +6,11 @@
 
 	# Mailer
 	require dirname(__DIR__).'/libs/mailer.php';
+	require dirname(__DIR__).'/libs/db-manipulation.php';
 
 	$services = [
-		'mailer:mass:mailing'	=> 'massMailing'
+		'mailer:mass:mailing'	=> 'massMailing',
+		'user:insertion' => 'insertUsers',
 	];
 
 	array_shift($argv);

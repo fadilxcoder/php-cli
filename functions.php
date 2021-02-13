@@ -24,4 +24,21 @@
         $result = converter($query);
         return $result;
     }
+
+    function insert($tbl, $data)
+    {
+        global $connection;
+
+        foreach( array_keys($data) as $key )
+        {
+            $fields[] = "`$key`";
+            $values[] = "'" .$data[$key] . "'";
+        }
+        $fields = implode(",", $fields);
+        $values = implode(",", $values);
+        $sql = "INSERT INTO `$tbl`($fields) VALUES ($values)";
+        $connection->set_charset("utf8"); // UTF8 settings
+        $connection->query($sql);
+        return $connection->insert_id;;
+    }
 ?>
