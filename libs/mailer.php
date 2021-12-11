@@ -10,16 +10,40 @@
 
         try {
             //Server settings
-            $mail->SMTPDebug 	= SMTP::DEBUG_LOWLEVEL;                      
-            $mail->isSMTP();                                            
-            $mail->Host       	= 'smtp.mailtrap.io';                
-            $mail->SMTPAuth   	= true;                               
-            $mail->Username   	= '7670025c440223';                 
-            $mail->Password   	= '0e52440291f186';                           
-            $mail->SMTPSecure 	= PHPMailer::ENCRYPTION_STARTTLS;     
-            $mail->Port       	= 2525;                                
-        
+
+            /*
+            * * self::DEBUG_OFF (`0`) No debug output, default
+            * * self::DEBUG_CLIENT (`1`) Client commands
+            * * self::DEBUG_SERVER (`2`) Client commands and server responses
+            * * self::DEBUG_CONNECTION (`3`) As DEBUG_SERVER plus connection status
+            * * self::DEBUG_LOWLEVEL (`4`) Low-level data output, all messages.
+            */
             
+            // $mail->SMTPDebug 	= SMTP::DEBUG_LOWLEVEL;
+            $mail->SMTPDebug 	= SMTP::DEBUG_CLIENT;
+            $mail->SMTPSecure 	= PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->isSMTP();
+/*
+            $mail->Host       	= 'smtp.mailtrap.io';
+            $mail->SMTPAuth   	= true;
+            $mail->Username   	= '7670025c440223';
+            $mail->Password   	= '0e52440291f186';
+            $mail->Port       	= 2525;
+*/
+            $mail->Host       	= 'localhost';                
+            $mail->SMTPAuth   	= null;                               
+            $mail->Username   	= null;                 
+            $mail->Password   	= null;                           
+            $mail->Port       	= 1025;                                
+            $mail->Timeout      = 30;
+            $mail->SMTPOptions  = [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                ]
+            ];
+
 
             $mail->isHTML(true); 
         
